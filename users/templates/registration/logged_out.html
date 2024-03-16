@@ -1,0 +1,74 @@
+{% load static %}
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>История операционных систем</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'css/dist/main-style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <script src="{% static '/js/script.js' %}" defer type="module"></script>
+  </head>
+  <body>
+      <div class="wrapper">
+        <header class="header">
+          <div class="header__body">
+            <div class="header__title"><a href="{% url 'main_app:index' %}" class="header__title_link">ov4r<span class="header__span">lxrd</span></a></div>
+            <ul class="header__menu">
+              <li class="header__item"><a href="{% url 'main_app:index' %}" class="header__link">Начало</a></li>
+              <li class="header__item"><a href="{% url 'main_app:list' %}" class="header__link">Список систем</a></li>
+              <li class="header__item"><a href="{% url 'main_app:history' %}" class="header__link">История</a></li>
+              <li class="header__item"><a href="index.html" class="header__link">Меню</a></li>
+              {% if user.is_authenticated %}
+              <li class="header__item"><a href="{% url 'main_app:index' %}" class="header__link">{{ user.username }}</a></li>
+              <li class="header__item"><div class="dropdown">
+                <button onclick="myFunction()" class="dropbtn">Игры</button>
+                  <div id="myDropdown" class="dropdown-content">
+                    <a href="snake/game.html" class="header__link">Змейка</a>
+                    <a href="game2/index.html" class="header__link">Космический бой</a>
+                    <a href="fighter/index.html" class="header__link">Fighter game</a>
+                  </div>
+                </div></li>
+              {% else %}
+              <li class="header__item"><a href="{% url 'users:register' %}" class="header__link">Зарегистрироваться</a></li>
+              <li class="header__item"><a href="{% url 'users:login' %}" class="header__link">Войти</a></li>
+              {% endif %}
+            </ul>
+          </div>
+        </header>
+        <main class="main">
+          <div style="text-align:center;
+          font-weight: 500;
+          font-size: 24px;
+          color: black;
+          position: absolute;
+          top: 15%;
+">Вы успешно вышли из аккаунта</div>>
+
+        </main>
+        <footer class="footer" style="
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 80px;
+">
+          <div class="footer__ad">
+            <div class="footer__ad_text">Здесь могла быть ваша реклама</div>
+          <div class="footer__main">
+            <div class="footer__main_cont footer-cont">
+              <div class="footer-cont__col">
+                <div class="footer-cont__title">Обо мне</div>
+                <div class="footer-cont__links">
+                  <a href="https://vk.com/ov4rlxrd" class="footer-cont__link">ВК</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+      <script src="{% static 'js/script.js' %}"> </script>
+  </body>
+</html>

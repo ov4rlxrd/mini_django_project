@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Войти</title>
+<!--    <link rel="stylesheet" href="{% static 'css/dist/main-style.css' %}">-->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+	<script src="{% static '/js/script.js' %}" defer type="module"></script>
+</head>
+<body>
+<div class="wrapper">
+        <header class="header">
+          <div class="header__body">
+            <div class="header__title"><a href="index.html" class="header__title_link">ov4r<span class="header__span">lxrd</span></a></div>
+            <ul class="header__menu">
+              <li class="header__item"><a href="{% url 'main_app:main' %}" class="header__link">Главная</a></li>
+              <li class="header__item"><a href="{% url 'main_app:list' %}" class="header__link">Список систем</a></li>
+              <li class="header__item"><a href="{% url 'main_app:history' %}" class="header__link">История</a></li>
+			  <li class="header__item"><a href="{% url 'main_app:index' %}" class="header__link">Меню</a></li>
+            </ul>
+          </div>
+        </header>
+
+        {% if from.errors %}
+          <div> Логин или пароль не сходятся. Попробуйте снова.</div>
+        {% endif %}
+        <form method="post" action="{% url 'users:login' %}" class="form_login">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <button name="submit">Log in</button>
+            <input type="hidden" name="next" value="{% url 'main_app:index' %}"/>
+
+
+        </form>
+
+<div/>
+<body/>
+<html/>
